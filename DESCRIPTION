@@ -1,0 +1,16 @@
+Package: fbSim
+Title: Simulates a Facebook user's behavior 
+Version: 0.1-1
+Authors@R: c(
+            person("Moreno", "Mancosu", email = "moreno.mancosu@unito.it",
+                  role = c("aut","cre")),
+                  person("Federico", "Vegetti", email = "vegetti.fede@gmail.com",
+                  role = c("aut")))
+Description: fbSim is a set of functions aiming at simulating registered users' behavior on Facebook.
+		The functions employs automatic browsing features of Google Chrome and saves data "seen" by users in a data frame.
+Depends: R (>= 3.4.1), XML, devtools, getPass, digest, RSelenium, wdman, binman, anytime
+Imports: methods, stats
+SystemRequirements:
+License: GPL-3
+LazyData: true
+RoxygenNote: 6.0.1
