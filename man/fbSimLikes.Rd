@@ -4,7 +4,7 @@
 \alias{fbSimLikes}
 \title{Show pages that are liked by a public Facebook page and stores them in a data frame}
 \usage{
-fbSimLikes(page_id, user_path, timeout = c(3, 6))
+fbSimLikes(page_id, user_path)
 }
 \arguments{
 \item{page_id}{The public likes of the Fb page to be shown.}
