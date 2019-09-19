@@ -64,6 +64,7 @@ In example code above, the function creates a folder in which profile informatio
 Once you created the profile folder, it will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, it is reccomandable **not** to delete the folder and use it for other sessions.
 
 
+
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
 The function ```fbSimPosts``` allows to get navigate and get information on the posts from a given Facebook page. The function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)). In addition, the function needs to know the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```). Other additional arguments that the function requires are:
@@ -93,3 +94,21 @@ The function ```fbSimPosts``` produces a ```data.frame``` object which contains 
 - ```link```: in the case another post/webpage is linked, the link which the post directs to.
 - ```date_collect```: the date and time when the post was collected.
 
+
+## Navigate the pages that a specific page likes: ```fbSimLikes```
+
+The function ```fbSimLikes``` allows to get navigate and get information on the pages that a certain Facebook page likes. As in ```fbSimPosts```, the function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)), as well as the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```).
+
+In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page.
+
+```r
+fb_page_id <- "116716651695782"  # Silvio Berlusconi's official page ID
+user_path <- "C:/Users/Username/Desktop/Chrome_profile"
+posts <- fbSimLikes(user_path, page_id)
+```
+
+
+The function ```fbSimLikes``` produces a ```data.frame``` object which contains the following variables:
+
+- ```post_name```: the non-numerical ID of the page.
+- ```page_id```: the ID of the page that targeted page likes

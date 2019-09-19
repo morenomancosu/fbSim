@@ -20,7 +20,7 @@
 #' @export
 #' 
 
-fbSimLikes <- function(page_id, user_path,timeout = c(3, 6)) {
+fbSimLikes <- function(page_id, user_path) {
     
 
     #===============================================================
@@ -101,7 +101,6 @@ fbSimLikes <- function(page_id, user_path,timeout = c(3, 6)) {
         
     }
     )
-
     
     #### PARSING
     
