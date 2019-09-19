@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 
 # An introduction to the fbSim package
 
@@ -69,7 +64,7 @@ In example code above, the function creates a folder in which profile informatio
 Once you created the profile folder, it will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, it is reccomandable **not** to delete the folder and use it for other sessions.
 
 
-## Mine Facebook public posts in a page: ```fbSimPosts```
+## Navigate Facebook public posts in a page: ```fbSimPosts```
 
 The function ```fbSimPosts``` allows to get navigate and get information on the posts from a given Facebook page. The function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)). In addition, the function needs to know the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```). Other additional arguments that the function requires are:
 
@@ -91,7 +86,10 @@ The function ```fbSimPosts``` produces a ```data.frame``` object which contains 
 - ```post_id```: the ID of the post, which can be used to access the post itself via web browser, as well as to mine additional information about the post.
 - ```datetime```: the date and time when the post was made.
 - ```react```: the number of reactions to the post.
-- ```comm```: the number of comments in reaction to the post.
+- ```comm```: the number of comments to the post.
 - ```shares```: the number of times the post was shared by other users.
+- ```pinned```: a variable that is 1 when the post is pinned and 0 otherwise
 - ```text_post```: the textual content of the post.
-- ```text_orig```: in case the post is a share of another post, the variable reports the textual content of the original post.
+- ```link```: in the case another post/webpage is linked, the link which the post directs to.
+- ```date_collect```: the date and time when the post was collected.
+
