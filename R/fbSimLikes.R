@@ -25,11 +25,8 @@ fbSimLikes <- function(page_id, user_path) {
 
     #===============================================================
     ### Error if missing argument(s)
-    if (methods::missingArg(page_id) | !exists("page_id", envir = parent.frame())) {
-        stop("missing argument: page_id", call.=FALSE)
-    }
-    if (methods::missingArg(user_path) | !exists("user_path", envir = parent.frame())) {
-        stop("missing argument: user_path", call.=FALSE)
+    if (methods::missingArg(page_id) | methods::missingArg(user_path)) {
+        stop("missing argument(s)",call.=FALSE)
     }
 
     #===============================================================
@@ -104,7 +101,7 @@ fbSimLikes <- function(page_id, user_path) {
     
     #### PARSING
     
-    var <- remDr$findElements(using = 'xpath', '//div[@class="_6a"]')
+    var <- remDr$findElements(using = 'xpath', '//li[@class="fbProfileBrowserListItem"]')
     
     if(length(var) == 0) {
         print("No pages liked by the selected page.")
@@ -116,11 +113,11 @@ fbSimLikes <- function(page_id, user_path) {
         
         for(i in 1:length(var)) {
             
-            elemtxt <- var[[i]]$getElementAttribute("outerHTML")[[1]]
+            elemtxt <- var[[i]]$getElementAttribute("outerHTML")[[1]] ####CHANGE COUNTER
             elemxml <- XML::htmlTreeParse(elemtxt, useInternalNodes = T, encoding = "UTF-8")
             
             page_name <- XML::xpathSApply(elemxml, "//a", XML::xmlValue)
-            
+            page_name <- page_name[2]
             ### page_id
             
             page_id <- XML::xpathSApply(elemxml, "//a", XML::xmlAttrs)

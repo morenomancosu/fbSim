@@ -99,7 +99,7 @@ The function ```fbSimPosts``` produces a ```data.frame``` object which contains 
 
 The function ```fbSimLikes``` allows to get navigate and get information on the pages that a certain Facebook page likes. As in ```fbSimPosts```, the function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)), as well as the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```).
 
-In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page.
+In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page. fbSimLikes allows to place indistinctely both ID (numeric identifier) and UID (non-numeric identifier) of the page, and returns the UID of the liked pages.
 
 ```r
 fb_page_id <- "116716651695782"  # Silvio Berlusconi's official page ID
@@ -110,5 +110,5 @@ posts <- fbSimLikes(user_path, page_id)
 
 The function ```fbSimLikes``` produces a ```data.frame``` object which contains the following variables:
 
-- ```post_name```: the non-numerical ID of the page.
-- ```page_id```: the ID of the page that targeted page likes
+- ```post_name```: the name of the page
+- ```page_id```: the non-numerical ID of the page

@@ -26,11 +26,10 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6)) {
     
     #===============================================================
     ### Error if missing argument(s)
-    if (methods::missingArg(page_id) | !exists("page_id", envir = parent.frame())) {
-        stop("missing argument: page_id", call.=FALSE)
-    }
-    if (methods::missingArg(user_path) | !exists("user_path", envir = parent.frame())) {
-        stop("missing argument: user_path", call.=FALSE)
+    
+    ### Error if missing argument(s)
+    if (methods::missingArg(page_id) | methods::missingArg(user_path)) {
+        stop("missing argument(s)",call.=FALSE)
     }
     
     #===============================================================
