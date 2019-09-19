@@ -67,7 +67,7 @@ Once you created the profile folder, it will be used by all the other functions 
 
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
-The function ```fbSimPosts``` allows to get navigate and get information on the posts from a given Facebook page. The function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)). In addition, the function needs to know the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```). Other additional arguments that the function requires are:
+The function ```fbSimPosts``` allows to get navigate and get information on the posts from a given Facebook page. The function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)) or the UID (non-numeric identifier) of the page. In addition, the function needs to know the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```). Other additional arguments that the function requires are:
 
 - The number of posts to be automatically navigated (default is 25).
 - The boundaries of the ```timeout``` between a request and the other (in seconds). Tests on the routine have found that a timeout going from 3 to 6 seconds is sufficiently slow not to lead to issues to the Facebook platform (an high frequency of requests might lead Facebook to shut down your account because of an attempt of DDoS[^Distributed Denial of Service.]).
@@ -99,7 +99,7 @@ The function ```fbSimPosts``` produces a ```data.frame``` object which contains 
 
 The function ```fbSimLikes``` allows to get navigate and get information on the pages that a certain Facebook page likes. As in ```fbSimPosts```, the function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)), as well as the path to a valid profile folder that contains user's email and password (the folder is produced with ```setFbAccount```).
 
-In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page. fbSimLikes allows to place indistinctely both ID (numeric identifier) and UID (non-numeric identifier) of the page, and returns the UID of the liked pages.
+In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page. ```fbSimLikes``` allows to place indistinctely both ID (numeric identifier) and UID (non-numeric identifier) of the page, and returns the UID of the liked pages.
 
 ```r
 fb_page_id <- "116716651695782"  # Silvio Berlusconi's official page ID
