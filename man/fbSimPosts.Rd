@@ -4,7 +4,8 @@
 \alias{fbSimPosts}
 \title{Show posts of a public Facebook page and stores some information in a dataframe}
 \usage{
-fbSimPosts(page_id, user_path, n_posts = 25, timeout = c(3, 6))
+fbSimPosts(page_id, user_path, n_posts = 25, timeout = c(3, 6),
+  chrome_ver = 77)
 }
 \arguments{
 \item{page_id}{The public Fb page to be shown.}
@@ -14,6 +15,8 @@ fbSimPosts(page_id, user_path, n_posts = 25, timeout = c(3, 6))
 \item{n_posts}{The number of posts to be shown (from the most recent to the oldest)}
 
 \item{timeout}{The system timeout between a browser action and the other. Default is c(3, 6), namely a random time between 3 and 6 seconds.}
+
+\item{chrome_ver}{The installed version of Google Chrome. To get the Chrome version go to chrome://version in Chrome's address bar and use the first two digits - e.g. if the version is 73.0.3683.86, just use 73).}
 }
 \value{
 A dataframe with information on public posts.

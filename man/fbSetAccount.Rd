@@ -4,12 +4,14 @@
 \alias{fbSetAccount}
 \title{Set a (permanent) Fb account}
 \usage{
-fbSetAccount(user, user_path = "Chrome_profile")
+fbSetAccount(user, user_path = "Chrome_profile", chrome_ver = 77)
 }
 \arguments{
 \item{user}{Your Facebook e-mail (The Fb password is requested once the function is called).}
 
 \item{user_path}{The location of the folder (folder name included).}
+
+\item{chrome_ver}{The installed version of Google Chrome. To get the Chrome version go to chrome://version in Chrome's address bar and use the first two digits - e.g. if the version is 73.0.3683.86, just use 73).}
 }
 \value{
 A folder in \code{"user_path"} containing a Chrome profile ready to access to Facebook.

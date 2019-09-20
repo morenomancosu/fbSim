@@ -4,12 +4,14 @@
 \alias{fbSimLikes}
 \title{Show pages that are liked by a public Facebook page and stores them in a data frame}
 \usage{
-fbSimLikes(page_id, user_path)
+fbSimLikes(page_id, user_path, chrome_ver = 77)
 }
 \arguments{
 \item{page_id}{The public likes of the Fb page to be shown.}
 
 \item{user_path}{The location of the profile folder (folder name included).}
+
+\item{chrome_ver}{The installed version of Google Chrome. To get the Chrome version go to chrome://version in Chrome's address bar and use the first two digits - e.g. if the version is 73.0.3683.86, just use 73).}
 }
 \value{
 A dataframe with information on public pages.

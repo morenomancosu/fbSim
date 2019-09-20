@@ -48,6 +48,8 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
         ver <- "74.0.3729.6"  
     } else if(chrome_ver==73) {
         ver <- "73.0.3683.68" 
+    } else {
+        stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
     }
     
     #============================================================================================
