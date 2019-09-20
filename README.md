@@ -21,8 +21,6 @@ It is possible to install ```fbSim``` in two ways: by employing ```install_githu
 ```r
 library(devtools)
 
-tkn <- "token_extracted_from_github.com"
-
 devtools::install_github("morenomancosu/fbSim")
 ```
 
@@ -62,7 +60,7 @@ In example code above, the function creates a folder in which profile informatio
 
 Once you created the profile folder, it will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, it is reccomandable **not** to delete the folder and use it for other sessions.
 
-IMPORTANT: If any function of fbSim returns an error in which Google Chrome version is taken into account, you might probably have issue with Chrome version. If yout installed Chrome is lower than v77.x, you can change the version by adding the ```chrome_ver = xx``` option (where xx is replaced by the frist two digits of your Chrome version). 
+**Important**: If any function of ```fbSim``` returns the error "version requested doesnt match versions available", you might probably have issues with Chrome's version. If yout installed Chrome is less recent than v77.x, you can change the version by adding the ```chrome_ver = xx``` option (where xx is replaced by the frist two digits of your Chrome version). ```fbSim``` supports Chrome 73.x or more recent.
 
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
