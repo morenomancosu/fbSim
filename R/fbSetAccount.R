@@ -4,6 +4,7 @@
 #'
 #' @param user Your Facebook e-mail (The Fb password is requested once the function is called).
 #' @param user_path The location of the folder (folder name included). 
+#' @param chrome_ver The installed version of Google Chrome. To get the Chrome version go to chrome://version in Chrome's address bar and use the first two digits - e.g. if the version is 73.0.3683.86, just use 73). 
 #'
 #' @return A folder in \code{"user_path"} containing a Chrome profile ready to access to Facebook.
 #' @author Moreno Mancosu \email{moreno.mancosu@@carloalberto.org}, Federico Vegetti \email{vegetti.fede@@gmail.com}
@@ -15,7 +16,7 @@
 #'
 #' @export
 
-fbSetAccount <- function(user, user_path = "Chrome_profile") {
+fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 77) {
     
     #============================================================================================
     #### Check whether arguments are ok
@@ -27,24 +28,29 @@ fbSetAccount <- function(user, user_path = "Chrome_profile") {
     if (is.character(user)==FALSE | is.character(user_path)==FALSE) {
         stop("all arguments must be a character",call.=FALSE)
     }
-    #### Checks also whether vital packages are lodaded 
-    #### (it should be done with the installation) 
-    # if ("package:wdman" %in% search() ==FALSE | "package:XML" %in% search() ==FALSE | 
-    #     "package:RSelenium" %in% search() ==FALSE |  "package:getPass" %in% search() ==FALSE) {
-    #     stop("Error in get.fb.account : vital packages not loaded.")
-    # }
-    #============================================================================================
     
-    #============================================================
-    # Deletes the folder for the profile in case is already there
-    # if(dir.exists(user_path)) unlink(user_path, recursive = T)
-    #============================================================
+    #####
+    
+    ver <- "77.0.3865.40"
+    if(chrome_ver==78) {
+        ver <- "78.0.3904.11"
+    } else if(chrome_ver==77) {
+        ver <- "77.0.3865.40"
+    } else if(chrome_ver==76) {
+        ver <- "76.0.3809.126"
+    } else if(chrome_ver==75) {
+        ver <- "75.0.3770.140"
+    } else if(chrome_ver==74) {
+        ver <- "74.0.3729.6"  
+    } else if(chrome_ver==73) {
+        ver <- "73.0.3683.68" 
+    }
     
     #===============================================================
     #### loads the right version of chromedriver
     #### and passes the profile options. It creates the folder
     #### 
-    cDrv <- wdman::chrome(version = "2.40", verbose = FALSE, check = TRUE)
+    cDrv <- wdman::chrome(version = ver, verbose = FALSE, check = TRUE)
     eCaps <- RSelenium::getChromeProfile(dataDir = user_path, 
                               profileDir = "Profile 1")
     eCaps$chromeOptions$args[[3]] <- "--disable-notifications"

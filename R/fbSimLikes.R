@@ -5,6 +5,7 @@
 #'   
 #' @param page_id The public likes of the Fb page to be shown.
 #' @param user_path The location of the profile folder (folder name included).
+#' @param chrome_ver The installed version of Google Chrome. To get the Chrome version go to chrome://version in Chrome's address bar and use the first two digits - e.g. if the version is 73.0.3683.86, just use 73). 
 #'
 #'
 #' @return A dataframe with information on public pages.
@@ -20,7 +21,7 @@
 #' @export
 #' 
 
-fbSimLikes <- function(page_id, user_path) {
+fbSimLikes <- function(page_id, user_path, chrome_ver = 77) {
     
 
     #===============================================================
@@ -29,12 +30,29 @@ fbSimLikes <- function(page_id, user_path) {
         stop("missing argument(s)",call.=FALSE)
     }
 
-    #===============================================================
+    ####
+    
+    ver <- "77.0.3865.40"
+    if(chrome_ver==78) {
+        ver <- "78.0.3904.11"
+    } else if(chrome_ver==77) {
+        ver <- "77.0.3865.40"
+    } else if(chrome_ver==76) {
+        ver <- "76.0.3809.126"
+    } else if(chrome_ver==75) {
+        ver <- "75.0.3770.140"
+    } else if(chrome_ver==74) {
+        ver <- "74.0.3729.6"  
+    } else if(chrome_ver==73) {
+        ver <- "73.0.3683.68" 
+    }
     
     #===============================================================
-    ### Loads the right version of chromedriver 
-    ### and passes the profile options from 'user_path'
-    cDrv <- wdman::chrome(version = "2.40", verbose = FALSE, check = TRUE)
+    #### loads the right version of chromedriver
+    #### and passes the profile options. It creates the folder
+    #### 
+    cDrv <- wdman::chrome(version = ver, verbose = FALSE, check = TRUE)
+    
     eCaps <- RSelenium::getChromeProfile(dataDir = user_path, 
                                          profileDir = "Profile 1")
     eCaps$chromeOptions$args[[3]] <- "--disable-notifications"

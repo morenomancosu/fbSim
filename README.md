@@ -8,12 +8,11 @@
 
 ## System requirements
 
-```fbSim``` needs also Google Chrome to be installed. In particular, the package has been tested with Chrome version ```67.0.3396.62```. You can chech the version of your installed build of Google chrome by typing the following line in Chrome's address bar. 
+```fbSim``` needs also Google Chrome to be installed. In particular, the package has been tested with Chrome version ```77.x```, but it is possible to change it (fbSim supports Chrome 73-78, see below). You can chech the version of your installed build of Google chrome by typing the following line in Chrome's address bar
 
 ```{bash eval = FALSE}
 chrome://version/
 ```
-
 
 ## Installation
 
@@ -63,7 +62,7 @@ In example code above, the function creates a folder in which profile informatio
 
 Once you created the profile folder, it will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, it is reccomandable **not** to delete the folder and use it for other sessions.
 
-
+IMPORTANT: If any function of fbSim returns an error in which Google Chrome version is taken into account, you might probably have issue with Chrome version. If yout installed Chrome is lower than v77.x, you can change the version by adding the ```chrome_ver = xx``` option (where xx is replaced by the frist two digits of your Chrome version). 
 
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
@@ -106,7 +105,6 @@ fb_page_id <- "116716651695782"  # Silvio Berlusconi's official page ID
 user_path <- "C:/Users/Username/Desktop/Chrome_profile"
 posts <- fbSimLikes(user_path, page_id)
 ```
-
 
 The function ```fbSimLikes``` produces a ```data.frame``` object which contains the following variables:
 
