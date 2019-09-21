@@ -8,7 +8,7 @@
 
 ## System requirements
 
-```fbSim``` needs also Google Chrome to be installed. In particular, the package has been tested with Chrome version ```77.x```, but it is possible to change it (fbSim supports Chrome 73-78, see below). You can chech the version of your installed build of Google chrome by typing the following line in Chrome's address bar
+```fbSim``` needs Google Chrome to be used. In particular, the package has been tested with Chrome version ```77.x```, but it is possible to change the version (```fbSim``` supports Chrome v73.xx or more, see below). You can chech the version of your installed build of Google Chrome by typing the following line in  the browser's address bar
 
 ```{bash eval = FALSE}
 chrome://version/
@@ -43,7 +43,7 @@ devtools::install(file.path(d, "fbSim"), dependencies = TRUE,
 
 Unlike similar packages like [```RFacebook```](https://cran.r-project.org/web/packages/Rfacebook/Rfacebook.pdf), ```fbSim``` does not need the user to provide an access token to run, but rather it needs an e-mail address and password associated to a valid Facebook profile. 
 
-Note that in order to correctly scrape information, the language of the Facebook interface must be **English**. You can change the interface by operating on the "Language" settings [here](https://www.facebook.com/settings?tab=language). 
+Note that, in order to correctly navigate and store Facebook pages information, the language of the Facebook interface must be **English**. You can change the interface by operating on the "Language" settings [here](https://www.facebook.com/settings?tab=language). 
 
 
 ## Authentication: ```fbSetAccount```
@@ -56,18 +56,18 @@ user_path <- "C:/Users/Username/Desktop/Chrome_profile"
 fbSetAccount(user, user_path)
 ```
 
-In example code above, the function creates a folder in which profile information are inserted. We highly reccomend inserting the entire path of the folder instead of just the name of the folder (e.g. for a Windows user, ```C:/Users/Username/Desktop/Chrome_profile``` is better than just ```Chrome_profile```). Before producing the folder, you will be asked to enter your Facebook profile's password. 
+In example code above, the function creates a folder in which the profile information is inserted. We highly reccomend inserting the entire path of the folder instead of just the name of the folder (e.g. for a Windows user, ```C:/Users/Username/Desktop/Chrome_profile``` is better than just ```Chrome_profile```). Before producing the folder, you will be asked to enter your Facebook profile's password. 
 
 Once you created the profile folder, it will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, it is reccomandable **not** to delete the folder and use it for other sessions.
 
-**Important**: If any function of ```fbSim``` returns the error "version requested doesnt match versions available", you might probably have issues with Chrome's version. If yout installed Chrome is less recent than v77.x, you can change the version by adding the ```chrome_ver = xx``` option (where xx is replaced by the frist two digits of your Chrome version). ```fbSim``` supports Chrome 73.x or more recent.
+**Important**: If any function of ```fbSim``` returns the error "version requested doesnt match versions available", you might probably have issues with Chrome's version. If yout installed Chrome is less recent than v77.x, you can change the version by adding the ```chrome_ver = xx``` option (where xx is replaced by the frist two digits of your Chrome version). ```fbSim``` supports Chrome 73.x or more recent versions.
 
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
 The function ```fbSimPosts``` allows to get navigate and get information on the posts from a given Facebook page. The function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)) or the UID (non-numeric identifier) of the page. In addition, the function needs to know the path to a valid profile folder that contains user's email and password (the folder is produced with ```fbSetAccount```). Other additional arguments that the function requires are:
 
 - The number of posts to be automatically navigated (default is 25).
-- The boundaries of the ```timeout``` between a request and the other (in seconds). Tests on the routine have found that a timeout going from 3 to 6 seconds is sufficiently slow not to lead to issues to the Facebook platform (an high frequency of requests might lead Facebook to shut down your account because of an attempt of DDoS[^Distributed Denial of Service.]).
+- The boundaries of the ```timeout``` between a request and the other (in seconds). Tests on the routine have found that a timeout going from 3 to 6 seconds is sufficiently slow not to lead to issues to the Facebook platform (an high frequency of requests might lead Facebook to shut down your account because of an attempt of DDoS).
 
 In the following example, we navigate the last 25 posts from Silvio Berlusconi's Facebook page.
 
@@ -94,7 +94,7 @@ The function ```fbSimPosts``` produces a ```data.frame``` object which contains 
 
 ## Navigate the pages that a specific page likes: ```fbSimLikes```
 
-The function ```fbSimLikes``` allows to get navigate and get information on the pages that a certain Facebook page likes. As in ```fbSimPosts```, the function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)), as well as the path to a valid profile folder that contains user's email and password (the folder is produced with ```fbSetAccount```).
+The function ```fbSimLikes``` allows to navigate and get information on the pages that a certain Facebook page likes. As in ```fbSimPosts```, the function needs the user to insert as argument the Facebook ID of the page (this can be obtained e.g. on [https://findmyfbid.com/](https://findmyfbid.com/)), as well as the path to a valid profile folder that contains user's email and password (the folder is produced with ```fbSetAccount```).
 
 In the following example, we navigate the pages liked by Silvio Berlusconi's Facebook page. ```fbSimLikes``` allows to place indistinctely both ID (numeric identifier) and UID (non-numeric identifier) of the page, and returns the UID of the liked pages.
 
@@ -107,4 +107,4 @@ posts <- fbSimLikes(user_path, page_id)
 The function ```fbSimLikes``` produces a ```data.frame``` object which contains the following variables:
 
 - ```post_name```: the name of the page
-- ```page_id```: the non-numerical ID of the page
+- ```page_id```: the UID (non-numerical ID) of the page
