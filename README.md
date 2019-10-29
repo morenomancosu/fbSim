@@ -16,7 +16,7 @@ chrome://version/
 
 ## Installation
 
-You can install ```fbSim``` either by using the function ```install_github()``` or the function ```install()``` (both from the package ```devtools```) on a downloaded tarball. In the first case, you can install ```fbSim``` by typing:
+You can install ```fbSim``` either by using the function ```install_github()``` or the function ```install()``` (both from the package ```devtools```) on a downloaded archive. In the first case, you can install ```fbSim``` by typing:
 
 ```r
 library(devtools)
