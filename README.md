@@ -24,19 +24,12 @@ library(devtools)
 devtools::install_github("morenomancosu/fbSim")
 ```
 
-In case you have downloaded the compressed tarball of ```fbSim``` (fbSim_0.1-1.tar.gz) you can install it by typing:
+In case you have cloned the package from this repository (usually ```fbSim-master.zip```) you can install it by unzipping it and typing:
 
 ```r
 library(devtools)
 
-d <- tempdir() #create a temporary directory
-
-untar("fbSim_0.1-1.tar.gz", compressed = "gzip", exdir = d) # uncompress the tarball in 
-                                                            # the temp directory
-
-devtools::install(file.path(d, "fbSim"), dependencies = TRUE,
-                  repos = "https://cloud.r-project.org/") # install the package 
-                                                          # including dependencies
+devtools::install("path/to/file/fbSim-master", dependencies = TRUE)
 ```
 
 ## Initial checks
