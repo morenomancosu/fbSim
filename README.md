@@ -65,9 +65,9 @@ The function ```fbSimPosts``` allows you to navigate and get information about t
 In the following example, we navigate the last 25 posts from Silvio Berlusconi's Facebook page.
 
 ```r
-fb_page_id <- "SilvioBerlusconi"  # Silvio Berlusconi's page UID
+page_id <- "SilvioBerlusconi"  # Silvio Berlusconi's page UID
 user_path <- "C:/Users/Username/Desktop/Chrome_profile"
-posts <- fbSimPosts(user_path, page_id, n_posts = 25, timeout = c(3, 6))
+posts <- fbSimPosts(page_id, user_path, n_posts = 25, timeout = c(3, 6))
 ```
 
 The function ```fbSimPosts``` produces a ```data.frame``` containing the following variables:
@@ -91,9 +91,9 @@ The function ```fbSimLikes``` allows to navigate and get information about the p
 In the following example, we navigate the pages liked by Silvio Berlusconi's page. ```fbSimLikes``` accepts either the ID (numeric identifier) or the UID (non-numeric identifier) of the page, and returns the UID of the liked pages.
 
 ```r
-fb_page_id <- "SilvioBerlusconi"  # Silvio Berlusconi's official page UID
+page_id <- "SilvioBerlusconi"  # Silvio Berlusconi's official page UID
 user_path <- "C:/Users/Username/Desktop/Chrome_profile"
-likedpages <- fbSimLikes(user_path, page_id)
+likedpages <- fbSimLikes(page_id, user_path)
 ```
 
 The function ```fbSimLikes``` produces a ```data.frame``` containing the following variables:
