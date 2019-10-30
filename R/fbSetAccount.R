@@ -54,7 +54,7 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 77) {
     #### 
     cDrv <- wdman::chrome(version = ver, verbose = FALSE, check = TRUE)
     eCaps <- RSelenium::getChromeProfile(dataDir = user_path, 
-                              profileDir = "Profile 1")
+                              profileDir = "Profile1")
     eCaps$chromeOptions$args[[3]] <- "--disable-notifications"
     # eCaps$chromeOptions$args[[4]] <- "--headless"
     remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost", 
