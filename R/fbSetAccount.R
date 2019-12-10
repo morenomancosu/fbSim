@@ -16,7 +16,7 @@
 #'
 #' @export
 
-fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 77) {
+fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
     
     #============================================================================================
     #### Check whether arguments are ok

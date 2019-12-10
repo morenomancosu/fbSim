@@ -23,7 +23,7 @@
 #' @export
 #' 
 
-fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chrome_ver = 77) {
+fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chrome_ver = 78) {
     
     #===============================================================
     ### Error if missing argument(s)

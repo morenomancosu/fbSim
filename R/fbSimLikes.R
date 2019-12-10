@@ -21,7 +21,7 @@
 #' @export
 #' 
 
-fbSimLikes <- function(page_id, user_path, chrome_ver = 77) {
+fbSimLikes <- function(page_id, user_path, chrome_ver = 78) {
     
 
     #===============================================================
