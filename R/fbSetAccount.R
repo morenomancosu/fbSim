@@ -31,9 +31,9 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 77) {
     
     #####
     
-    ver <- "77.0.3865.40"
+    ver <- "78.0.3904.105"
     if(chrome_ver==78) {
-        ver <- "78.0.3904.11"
+        ver <- "78.0.3904.105"
     } else if(chrome_ver==77) {
         ver <- "77.0.3865.40"
     } else if(chrome_ver==76) {

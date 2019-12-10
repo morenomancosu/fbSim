@@ -32,22 +32,22 @@ fbSimLikes <- function(page_id, user_path, chrome_ver = 77) {
 
     ####
     
+  ver <- "78.0.3904.105"
+  if(chrome_ver==78) {
+    ver <- "78.0.3904.105"
+  } else if(chrome_ver==77) {
     ver <- "77.0.3865.40"
-    if(chrome_ver==78) {
-        ver <- "78.0.3904.11"
-    } else if(chrome_ver==77) {
-        ver <- "77.0.3865.40"
-    } else if(chrome_ver==76) {
-        ver <- "76.0.3809.126"
-    } else if(chrome_ver==75) {
-        ver <- "75.0.3770.140"
-    } else if(chrome_ver==74) {
-        ver <- "74.0.3729.6"  
-    } else if(chrome_ver==73) {
-        ver <- "73.0.3683.68" 
-    } else {
-        stop("Invalid chrome version. fbSim supports Chrome 73.x or higher.",call.=FALSE)
-    }
+  } else if(chrome_ver==76) {
+    ver <- "76.0.3809.126"
+  } else if(chrome_ver==75) {
+    ver <- "75.0.3770.140"
+  } else if(chrome_ver==74) {
+    ver <- "74.0.3729.6"  
+  } else if(chrome_ver==73) {
+    ver <- "73.0.3683.68" 
+  } else {
+    stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
+  }
     
     #===============================================================
     #### loads the right version of chromedriver
