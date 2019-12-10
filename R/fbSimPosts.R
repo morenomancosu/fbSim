@@ -35,7 +35,6 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
     
     ####
     
-    ver <- "77.0.3865.40"
     ver <- "78.0.3904.105"
     if(chrome_ver==78) {
       ver <- "78.0.3904.105"
