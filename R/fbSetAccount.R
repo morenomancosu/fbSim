@@ -87,9 +87,13 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
   
   tryCatch({
     suppressMessages({
-      remDr$findElement("id", "email")$sendKeysToElement(list(user))
-      remDr$findElement("id", "pass")$sendKeysToElement(list(pass))
-      remDr$findElements("id", "loginbutton")[[1]]$clickElement()
+      remDr$findElement("name", "email")$sendKeysToElement(list(user))
+      remDr$findElement("name", "pass")$sendKeysToElement(list(pass))
+      if(length(remDr$findElements("id", "loginbutton"))>0) {
+        remDr$findElements("id", "loginbutton")[[1]]$clickElement()}
+      else {
+        remDr$findElements("name", "login")[[1]]$clickElement()
+      }
       remDr$executeScript("return document.readyState == 'complete';") #wait until the page loaded, not sure if works
       Sys.sleep(15)
     })
