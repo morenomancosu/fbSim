@@ -17,108 +17,108 @@
 #' @export
 
 fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
-    
-    #============================================================================================
-    #### Check whether arguments are ok
-    #### Namely, whether they are not missing...
-    if (methods::missingArg(user) | !exists("user", envir = parent.frame())) {
-        stop("missing argument: user",call.=FALSE)
-    }
-    #### ... or non-character
-    if (is.character(user)==FALSE | is.character(user_path)==FALSE) {
-        stop("all arguments must be a character",call.=FALSE)
-    }
-    
-    #####
-    
+  
+  #============================================================================================
+  #### Check whether arguments are ok
+  #### Namely, whether they are not missing...
+  if (methods::missingArg(user) | !exists("user", envir = parent.frame())) {
+    stop("missing argument: user",call.=FALSE)
+  }
+  #### ... or non-character
+  if (is.character(user)==FALSE | is.character(user_path)==FALSE) {
+    stop("all arguments must be a character",call.=FALSE)
+  }
+  
+  #####
+  
+  ver <- "78.0.3904.105"
+  if(chrome_ver==78) {
     ver <- "78.0.3904.105"
-    if(chrome_ver==78) {
-        ver <- "78.0.3904.105"
-    } else if(chrome_ver==77) {
-        ver <- "77.0.3865.40"
-    } else if(chrome_ver==76) {
-        ver <- "76.0.3809.126"
-    } else if(chrome_ver==75) {
-        ver <- "75.0.3770.140"
-    } else if(chrome_ver==74) {
-        ver <- "74.0.3729.6"  
-    } else if(chrome_ver==73) {
-        ver <- "73.0.3683.68" 
-    } else {
-        stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
-    }
-    
-    #===============================================================
-    #### loads the right version of chromedriver
-    #### and passes the profile options. It creates the folder
-    #### 
-    cDrv <- wdman::chrome(version = ver, verbose = FALSE, check = TRUE)
-    eCaps <- RSelenium::getChromeProfile(dataDir = user_path, 
-                              profileDir = "Profile1")
-    eCaps$chromeOptions$args[[3]] <- "--disable-notifications"
-    # eCaps$chromeOptions$args[[4]] <- "--headless"
-    remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost", 
-                          browserName = "chrome", 
-                          port = 4567L, 
-                          extraCapabilities = eCaps)
-    #===============================================================
-    
-    #===============================================================
-    ### The browser goes into Facebook main page and logs in
-    ### With the new fb policy infos are automatically saved in the profile folder
-    ### which should be created in the folder indicated as argument.
-    
-    pass <- getPass::getPass("Enter your Facebook profile's password: ")
-    
-    tryCatch({
-      suppressMessages({
-        remDr$open()
-        remDr$navigate("http://www.facebook.com")
-        
-      })
-    }, 
-    error = function(e) {
-      remDr$close()
-      cDrv$stop()
-      stop("something went wrong. Check your internet connection and try again.", call.=FALSE)
+  } else if(chrome_ver==77) {
+    ver <- "77.0.3865.40"
+  } else if(chrome_ver==76) {
+    ver <- "76.0.3809.126"
+  } else if(chrome_ver==75) {
+    ver <- "75.0.3770.140"
+  } else if(chrome_ver==74) {
+    ver <- "74.0.3729.6"  
+  } else if(chrome_ver==73) {
+    ver <- "73.0.3683.68" 
+  } else {
+    stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
+  }
+  
+  #===============================================================
+  #### loads the right version of chromedriver
+  #### and passes the profile options. It creates the folder
+  #### 
+  cDrv <- wdman::chrome(version = ver, verbose = FALSE, check = TRUE)
+  eCaps <- RSelenium::getChromeProfile(dataDir = user_path, 
+                                       profileDir = "Profile1")
+  eCaps$chromeOptions$args[[3]] <- "--disable-notifications"
+  # eCaps$chromeOptions$args[[4]] <- "--headless"
+  remDr <- RSelenium::remoteDriver(remoteServerAddr = "localhost", 
+                                   browserName = "chrome", 
+                                   port = 4567L, 
+                                   extraCapabilities = eCaps)
+  #===============================================================
+  
+  #===============================================================
+  ### The browser goes into Facebook main page and logs in
+  ### With the new fb policy infos are automatically saved in the profile folder
+  ### which should be created in the folder indicated as argument.
+  
+  pass <- getPass::getPass("Enter your Facebook profile's password: ")
+  
+  tryCatch({
+    suppressMessages({
+      remDr$open()
+      remDr$navigate("http://www.facebook.com")
       
-    }
-    )
+    })
+  }, 
+  error = function(e) {
+    remDr$close()
+    cDrv$stop()
+    stop("something went wrong. Check your internet connection and try again.", call.=FALSE)
     
-    tryCatch({
-      suppressMessages({
-        remDr$findElement("id", "email")$sendKeysToElement(list(user))
-        remDr$findElement("id", "pass")$sendKeysToElement(list(pass))
-        remDr$findElements("id", "loginbutton")[[1]]$clickElement()
-        remDr$executeScript("return document.readyState == 'complete';") #wait until the page loaded, not sure if works
-        Sys.sleep(15)
-      })
-    },
-    error = function(e) {
-      warning(paste0("the account has already been set! Please delete the folder in ",
-                     user_path, 
-                     " to set it again"),
-              call. = FALSE)
-      
-    }
-    )
+  }
+  )
+  
+  tryCatch({
+    suppressMessages({
+      remDr$findElement("id", "email")$sendKeysToElement(list(user))
+      remDr$findElement("id", "pass")$sendKeysToElement(list(pass))
+      remDr$findElements("id", "loginbutton")[[1]]$clickElement()
+      remDr$executeScript("return document.readyState == 'complete';") #wait until the page loaded, not sure if works
+      Sys.sleep(10)
+    })
+  },
+  error = function(e) {
+    warning(paste0("the account has already been set! Please delete the folder in ",
+                   user_path, 
+                   " to set it again"),
+            call. = FALSE)
     
-    string <- remDr$getCurrentUrl()[[1]]
-    if (grepl("login_attempt=", string)) {
-      
-      remDr$close()
-      cDrv$stop()
-      stop("something went wrong. Check your e-mail and password and try again.", 
-           call. = FALSE)
-      
-    }
-    else {
-      # Close ports
-      remDr$close()
-      cDrv$stop()
-    }
- 
-    #===============================================================
+  }
+  )
+  
+  string <- remDr$getCurrentUrl()[[1]]
+  if (grepl("login_attempt=", string)) {
     
+    remDr$close()
+    cDrv$stop()
+    stop("something went wrong. Check your e-mail and password and try again.", 
+         call. = FALSE)
     
+  }
+  else {
+    # Close ports
+    remDr$close()
+    cDrv$stop()
+  }
+  
+  #===============================================================
+  
+  
 }
