@@ -91,7 +91,7 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
       remDr$findElement("id", "pass")$sendKeysToElement(list(pass))
       remDr$findElements("id", "loginbutton")[[1]]$clickElement()
       remDr$executeScript("return document.readyState == 'complete';") #wait until the page loaded, not sure if works
-      Sys.sleep(10)
+      Sys.sleep(15)
     })
   },
   error = function(e) {

@@ -34,7 +34,7 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
     }
     
     ####
-    
+     
     ver <- "78.0.3904.105"
     if(chrome_ver==78) {
       ver <- "78.0.3904.105"
@@ -164,7 +164,7 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
     for (i in 1:n_posts) {
         
         #### FIRST POST
-        
+
         elemtxt <- var[[i]]$getElementAttribute("outerHTML")[[1]] #####CAMBIA L'1
         elemxml <- XML::htmlTreeParse(elemtxt, useInternalNodes = T, encoding = "UTF-8")
         
@@ -207,20 +207,21 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
         
         # commshare <- XML::xpathSApply(elemxml, "//div[@class='_1fnt']", XML::xmlValue)
         commshare <- XML::xpathSApply(elemxml, "//span[@class='_1j-c']", XML::xmlValue)
+        commshare <- tolower(commshare)
         if(sum(grepl("comment", commshare)) == 0){
             comm <- 0
         } else {
             comm <- gsub(" comment.*", "", commshare[grepl("comment", commshare)])
-            comm <- ifelse(grepl("K", comm), 
-                           as.numeric(sub("K", "", comm))*1000, 
+            comm <- ifelse(grepl("k", comm), 
+                           as.numeric(sub("k", "", comm))*1000, 
                            as.numeric(comm))
         }
         if(sum(grepl("share", commshare)) == 0){
             shares <- 0
         } else {
             shares <- gsub(" share.*", "", commshare[grepl("share", commshare)])
-            shares <- ifelse(grepl("K", shares), 
-                             as.numeric(sub("K", "", shares))*1000, 
+            shares <- ifelse(grepl("k", shares), 
+                             as.numeric(sub("k", "", shares))*1000, 
                              as.numeric(shares))
         }
         
