@@ -8,7 +8,7 @@
 
 ## System requirements
 
-```fbSim``` depends on Google Chrome. The package has been tested with Chrome version ```77.x```, but it is possible to change Chrome version (```fbSim``` supports Chrome version ```73.x``` or later, see below). You can check your version of Chrome by typing the following line in the browser's address bar:
+```fbSim``` depends on Google Chrome. The package has been tested with Chrome version ```80.x```, but it is possible to change Chrome version (```fbSim``` supports Chrome version ```73.x``` or later, see below). You can check your version of Chrome by typing the following line in the browser's address bar:
 
 ```{bash eval = FALSE}
 chrome://version/
@@ -53,7 +53,7 @@ In the code above, the function creates a folder where the profile information i
 
 Once you created the folder, the same Chrome profile will be used by all the other functions of ```fbSim```. The profile is permanent, and there is no need to refresh it (as in the case of old access tokens in ```RFacebook```). For this reason, we reccomand **not** to delete the folder, and to use it for all other sessions.
 
-**Important**: If any function of ```fbSim``` returns the error "version requested doesn't match versions available", you probably have issues with your version of Chrome. If the version of Chrome on your computer is older than ```77.x```, you can change the version by adding the option ```chrome_ver = xx``` (where ```xx``` is replaced by the first two digits of your Chrome version). ```fbSim``` supports Chrome ```73.x``` or newer.
+**Important**: If any function of ```fbSim``` returns the error "version requested doesn't match versions available", you probably have issues with your version of Chrome. If the version of Chrome on your computer is older than ``80.x```, you can change the version by adding the option ```chrome_ver = xx``` (where ```xx``` is replaced by the first two digits of your Chrome version). ```fbSim``` supports Chrome ```73.x``` or newer.
 
 ## Navigate Facebook public posts in a page: ```fbSimPosts```
 
