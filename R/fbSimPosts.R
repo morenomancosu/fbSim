@@ -23,7 +23,7 @@
 #' @export
 #' 
 
-fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chrome_ver = 78) {
+fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chrome_ver = 80) {
     
     #===============================================================
     ### Error if missing argument(s)
@@ -35,22 +35,26 @@ fbSimPosts <- function(page_id, user_path, n_posts = 25, timeout = c(3, 6), chro
     
     ####
      
-    ver <- "78.0.3904.105"
-    if(chrome_ver==78) {
-      ver <- "78.0.3904.105"
-    } else if(chrome_ver==77) {
-      ver <- "77.0.3865.40"
-    } else if(chrome_ver==76) {
-      ver <- "76.0.3809.126"
-    } else if(chrome_ver==75) {
-      ver <- "75.0.3770.140"
-    } else if(chrome_ver==74) {
-      ver <- "74.0.3729.6"  
-    } else if(chrome_ver==73) {
-      ver <- "73.0.3683.68" 
-    } else {
-      stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
-    }
+  ver <- "80.0.3987.106"
+  if(chrome_ver==80) {
+    ver <- "80.0.3987.106"
+  } else if(chrome_ver==79) { 
+    ver <- "	79.0.3945.36"
+  } else if(chrome_ver==78) { 
+    ver <- "78.0.3904.70"
+  } else if(chrome_ver==77) {
+    ver <- "77.0.3865.40"
+  } else if(chrome_ver==76) {
+    ver <- "76.0.3809.126"
+  } else if(chrome_ver==75) {
+    ver <- "75.0.3770.140"
+  } else if(chrome_ver==74) {
+    ver <- "74.0.3729.6"  
+  } else if(chrome_ver==73) {
+    ver <- "73.0.3683.68" 
+  } else {
+    stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
+  }
     
     #============================================================================================
     

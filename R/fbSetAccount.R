@@ -16,7 +16,7 @@
 #'
 #' @export
 
-fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
+fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 80) {
   
   #============================================================================================
   #### Check whether arguments are ok
@@ -31,9 +31,13 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 78) {
   
   #####
   
-  ver <- "78.0.3904.105"
-  if(chrome_ver==78) {
-    ver <- "78.0.3904.105"
+  ver <- "80.0.3987.106"
+  if(chrome_ver==80) {
+    ver <- "80.0.3987.106"
+  } else if(chrome_ver==79) { 
+    ver <- "	79.0.3945.36"
+  } else if(chrome_ver==78) { 
+    ver <- "78.0.3904.70"
   } else if(chrome_ver==77) {
     ver <- "77.0.3865.40"
   } else if(chrome_ver==76) {
