@@ -16,7 +16,7 @@
 #'
 #' @export
 
-fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 80) {
+fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 84) {
   
   #============================================================================================
   #### Check whether arguments are ok
@@ -31,11 +31,17 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 80) {
   
   #####
   
-  ver <- "80.0.3987.106"
-  if(chrome_ver==80) {
+  ver <- "84.0.4147.30"
+  if(chrome_ver==84) {
+    ver <- "84.0.4147.30"
+  } else if(chrome_ver==83) { 
+    ver <- "83.0.4103.39"
+  } else if(chrome_ver==81) { 
+    ver <- "81.0.4044.138"
+  } else if(chrome_ver==80) { 
     ver <- "80.0.3987.106"
   } else if(chrome_ver==79) { 
-    ver <- "	79.0.3945.36"
+    ver <- "79.0.3945.36"
   } else if(chrome_ver==78) { 
     ver <- "78.0.3904.70"
   } else if(chrome_ver==77) {
@@ -51,6 +57,7 @@ fbSetAccount <- function(user, user_path = "Chrome_profile",chrome_ver = 80) {
   } else {
     stop("Invalid chrome version. fbSim supports Chrome 73 or higher.",call.=FALSE)
   }
+  
   
   #===============================================================
   #### loads the right version of chromedriver
