@@ -21,7 +21,7 @@
 #' @export
 #' 
 
-fbSimLikes <- function(page_id, user_path, chrome_ver = 84) {
+fbSimLikes <- function(page_id, user_path, chrome_ver = 86) {
     
 
     #===============================================================
@@ -32,8 +32,12 @@ fbSimLikes <- function(page_id, user_path, chrome_ver = 84) {
 
     ####
     
-  ver <- "84.0.4147.30"
-  if(chrome_ver==84) {
+  ver <- "86.0.4240.22"
+  if(chrome_ver==86) {
+    ver <- "86.0.4240.22"
+  } else if(chrome_ver==85) { 
+    ver <- "85.0.4183.87"
+  } else if(chrome_ver==84) { 
     ver <- "84.0.4147.30"
   } else if(chrome_ver==83) { 
     ver <- "83.0.4103.39"
